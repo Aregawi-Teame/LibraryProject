@@ -1,5 +1,6 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
@@ -9,13 +10,18 @@ public class Book {
 	private boolean availablity;
 	private List<BookCopy> bookCopies;
 
-	public Book(String member_id, long isbn, List<Author> authors, boolean availablity, List<BookCopy> bookCopies) {
+	public Book(String member_id, long isbn, List<Author> authors, boolean availablity) {
 		super();
 		this.member_id = member_id;
 		this.isbn = isbn;
 		this.authors = authors;
 		this.availablity = availablity;
-		this.bookCopies = bookCopies;
+		this.bookCopies = new ArrayList<BookCopy>();
+		addBookCopy(1);
+	}
+
+	private void addBookCopy(int copyNum) {
+		bookCopies.add(new BookCopy(this, copyNum));
 	}
 
 	public String getMember_id() {
