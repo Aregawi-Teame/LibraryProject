@@ -21,7 +21,10 @@ public class DataAccessFacade implements DataAccess {
 		BOOKS, MEMBERS, USERS;
 	}
 
-	public static final String OUTPUT_DIR = "D:\\MIU\\January\\MPP\\Michel Yang\\mpp-lab\\Library System\\src\\dataaccess\\storage";
+	public static final String OUTPUT_DIR = "C:\\Users\\adama\\eclipse-workspace\\LibraryProject\\src\\dataaccess\\storage";
+	
+	// Path for Adama below
+	// C:\\Users\\adama\\eclipse-workspace\\LibraryProject\\src\\dataaccess\\storage
 //	public static final String OUTPUT_DIR = System.getProperty("user.dir")
 //			+ "\\src\\dataaccess\\storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
