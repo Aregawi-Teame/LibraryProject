@@ -1,43 +1,42 @@
 package business;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
-	private String member_id;
-	private long isbn;
+@SuppressWarnings("serial")
+public class Book implements Serializable {
+	
+	private String isbn;
+	private String title;
+	private int maxCheckout;
 	private List<Author> authors;
-	private boolean availablity;
 	private List<BookCopy> bookCopies;
 
-	public Book(String member_id, long isbn, List<Author> authors, boolean availablity) {
-		super();
-		this.member_id = member_id;
+	public Book(String isbn, String title, int maxCheckout, List<Author> authors) {
+		this.title = title;
 		this.isbn = isbn;
+		this.maxCheckout = maxCheckout;
 		this.authors = authors;
-		this.availablity = availablity;
 		this.bookCopies = new ArrayList<BookCopy>();
-		addBookCopy(1);
+		bookCopies.add(new BookCopy(this, 1, true));
 	}
 
-	private void addBookCopy(int copyNum) {
-		bookCopies.add(new BookCopy(this, copyNum));
+	public void addCopy() {
+		int copies = this.getCopyNums();
+		bookCopies.add(new BookCopy(this, copies + 1, true));
 	}
 
-	public String getMember_id() {
-		return member_id;
+	public String getTitle() {
+		return title;
 	}
 
-	public long getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
 	public List<Author> getAuthors() {
 		return authors;
-	}
-
-	public boolean isAvailablity() {
-		return availablity;
 	}
 
 	public List<BookCopy> getBookCopies() {
@@ -47,9 +46,18 @@ public class Book {
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-
-	public void setAvailablity(boolean availablity) {
-		this.availablity = availablity;
+	
+	public int getCopyNums() {
+		return bookCopies.size();
+	}
+	
+	public BookCopy getCopy(int copyNum) {
+		BookCopy copy = null;
+		for(BookCopy bookCopy: bookCopies) {
+			if(bookCopy.getCopyNum() == copyNum)
+				copy = bookCopy;
+		}
+		return copy;
 	}
 
 }

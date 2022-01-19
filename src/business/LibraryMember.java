@@ -1,9 +1,12 @@
 package business;
 
-public class LibraryMember extends Person {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class LibraryMember extends Person implements Serializable {
 	private String memberId;
 	
-	public LibraryMember(String fName, String lName, String tel, Address addr, String memberId) {
+	public LibraryMember(String memberId, String fName, String lName, String tel, Address addr) {
 		super(fName, lName, tel, addr);
 		this.memberId = memberId;
 	}

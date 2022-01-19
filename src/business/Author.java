@@ -1,6 +1,9 @@
 package business;
 
-public class Author extends Person {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Author extends Person implements Serializable {
 	private String shortBio;
 	
 	public Author(String fName, String lName, String tel, Address addr, String shortBio) {
