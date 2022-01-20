@@ -1,14 +1,14 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import business.LoginException;
-import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 import dataaccess.User;
 
-public class LoginController {
+public class SystemController implements ISystemController {
 	public static User authenticatedUser = null;
 
 	public void login(String id, String password) throws LoginException {
@@ -22,5 +22,15 @@ public class LoginController {
 			throw new LoginException("Password incorrect");
 		}
 		authenticatedUser = users.get(id);
+	}
+
+	@Override
+	public List<String> allMembersId() {
+		return null;
+	}
+
+	@Override
+	public List<String> allBooksIsbn() {
+		return null;
 	}
 }
