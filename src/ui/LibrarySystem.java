@@ -47,7 +47,7 @@ public class LibrarySystem extends JFrame implements MessageableWindow {
 		this.adminItems = new ListItem[] { this.login, this.allBooks, this.allMembers, this.addLibraryMember,
 				this.addBook, this.addBookCopy };
 		this.librarianItems = new ListItem[] { this.login, this.allBooks, this.allMembers, this.checkoutBook,
-				this.checkoutRecords, this.bookStatus, this.addBook, this.addBookCopy };
+				this.checkoutRecords, this.bookStatus};
 		Util.adjustLabelFont(statusBar, Util.DARK_BLUE, true);
 		this.setSize(650, 450);
 		this.createLinkLabels();

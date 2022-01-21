@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 
-public class Main {
+public class Application {
    public static void main(String[] args) {
       EventQueue.invokeLater(() -> { 
          JFrame frame = new LibrarySystem();

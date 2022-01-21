@@ -33,7 +33,7 @@ public class AllMemberIds implements MessageableWindow {
 
 	public void defineTopPanel() {
 		this.topPanel = new JPanel();
-		JLabel titlesLabel = new JLabel("View Book ID");
+		JLabel titlesLabel = new JLabel("View Member ID");
 		Util.adjustLabelFont(titlesLabel, Util.DARK_BLUE, true);
 		this.topPanel.setLayout(new FlowLayout(0));
 		this.topPanel.add(titlesLabel);

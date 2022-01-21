@@ -126,7 +126,7 @@ public class AddLibraryMember implements MessageableWindow {
       middlePanel.add(rightPanel);
       this.outerMiddle.add(middlePanel, "North");
       JButton addBookButton = new JButton("Add Member");
-      this.attachAddBookButtonListener(addBookButton, this);
+      this.addLibraryMember(addBookButton, this);
       JPanel addBookButtonPanel = new JPanel();
       addBookButtonPanel.setLayout(new FlowLayout(1));
       addBookButtonPanel.add(addBookButton);
@@ -144,7 +144,7 @@ public class AddLibraryMember implements MessageableWindow {
 		telephone.setText("");
    }
    
-   private void attachAddBookButtonListener(JButton butn, AddLibraryMember m) {
+   private void addLibraryMember(JButton butn, AddLibraryMember m) {
       butn.addActionListener((evt) -> {
     	  String memberID = id.getText();
 			String memberFirstName = firstName.getText();

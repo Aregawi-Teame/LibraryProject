@@ -99,21 +99,20 @@ public class AddBookPanel implements MessageableWindow, Serializable
         leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
         leftPanel.add(titleLabel);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
-        leftPanel.add(author);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
-        leftPanel.add(author);
-        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
         leftPanel.add(maxcheclen);
         leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
         leftPanel.add(numofcopy);
+        
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
+        leftPanel.add(author);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
+        leftPanel.add(author);
         
         rightPanel.add(this.isbn);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 8)));
         rightPanel.add(this.titleField);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 8)));
-        rightPanel.add(authorNum);
       
-        rightPanel.add(this.addAuthorButton);
         rightPanel.add(this.clearAuthorButton);
         rightPanel.add(Box.createRigidArea(new Dimension(0, 8)));
         rightPanel.add(this.maximumcheckoutlength);
@@ -121,7 +120,8 @@ public class AddBookPanel implements MessageableWindow, Serializable
         rightPanel.add(Box.createRigidArea(new Dimension(0, 8)));
         rightPanel.add(this.numberofcopies);
         
-        
+        rightPanel.add(authorNum);
+        rightPanel.add(this.addAuthorButton);
         
         middlePanel.add(leftPanel);
         middlePanel.add(rightPanel);

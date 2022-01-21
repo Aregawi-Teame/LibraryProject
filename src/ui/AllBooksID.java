@@ -66,6 +66,6 @@ public class AllBooksID implements MessageableWindow {
 			sb.append(s + "\n");
 		}
 		this.textArea.setText(sb.toString());
-		this.mainPanel.repaint();
+		//this.mainPanel.repaint();
 	}
 }
