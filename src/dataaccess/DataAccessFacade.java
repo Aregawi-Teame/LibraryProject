@@ -21,20 +21,27 @@ public class DataAccessFacade implements DataAccess {
 		BOOKS, MEMBERS, USERS;
 	}
 
-	public static final String OUTPUT_DIR = "D:\\MIU\\January\\MPP\\Michel Yang\\mpp-lab\\LibraryProject\\src\\dataaccess\\storage";
+	public static final String OUTPUT_DIR = "/Users/heranbeyene/Documents/H_MIU_Cources/FPP/Workspace/LibraryProject/src/dataaccess/storage";
 	// public static final String OUTPUT_DIR = "C:\\Users\\adama\\eclipse-workspace\\LibraryProject\\src\\dataaccess\\storage";
 	// Path for Adama below
 	// C:\\Users\\adama\\eclipse-workspace\\LibraryProject\\src\\dataaccess\\storage
     //	public static final String OUTPUT_DIR = System.getProperty("user.dir")
     //			+ "\\src\\dataaccess\\storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
-
+ 
 	// implement: other save operations
 	public void saveNewMember(LibraryMember member) {
 		HashMap<String, LibraryMember> mems = readMemberMap();
 		String memberId = member.getMemberId();
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);
+	}
+	
+	public void saveNewBook(Book book) {
+		HashMap<String, Book> books = readBooksMap();
+		String isbn = book.getIsbn();
+		books.put(isbn, book);
+		saveToStorage(StorageType.BOOKS, books);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -2,7 +2,6 @@ package business;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class Address implements Serializable {
 	private String street;
 	private String city;
@@ -49,4 +48,5 @@ public class Address implements Serializable {
 		this.zip = zip;
 	}
 
+	private static final long serialVersionUID = -4935233558647213035L;
 }

@@ -4,15 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("serial")
 public class Book implements Serializable {
-	
+
 	private String isbn;
 	private String title;
 	private int maxCheckout;
 	private List<Author> authors;
 	private List<BookCopy> bookCopies;
-
+	
 	public Book(String isbn, String title, int maxCheckout, List<Author> authors) {
 		this.title = title;
 		this.isbn = isbn;
@@ -23,8 +22,7 @@ public class Book implements Serializable {
 	}
 
 	public void addCopy() {
-		int copies = this.getCopyNums();
-		bookCopies.add(new BookCopy(this, copies + 1, true));
+		bookCopies.add(new BookCopy(this, this.getCopyNums() + 1, true));
 	}
 
 	public String getTitle() {
@@ -46,18 +44,47 @@ public class Book implements Serializable {
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-	
+
 	public int getCopyNums() {
 		return bookCopies.size();
 	}
-	
-	public BookCopy getCopy(int copyNum) {
-		BookCopy copy = null;
-		for(BookCopy bookCopy: bookCopies) {
-			if(bookCopy.getCopyNum() == copyNum)
-				copy = bookCopy;
-		}
-		return copy;
+
+	public int getMaxCheckout() {
+		return this.maxCheckout;
 	}
+
+	public BookCopy getCopy() {
+		BookCopy bookCopy = null;
+		if(this.numOfAvailableBooks() >= 1) {
+			for(BookCopy copy: bookCopies) {
+				if(copy.isAvailable() == true) {
+					bookCopy = copy;
+					copy.changeAvailaibility();
+					break;
+				}
+					
+			}
+		}
+		
+		return bookCopy;
+	}
+	
+	public int numOfAvailableBooks() {
+		int count = 0;
+		for(BookCopy copy: bookCopies) {
+			if(copy.isAvailable() == true) {
+				count = count + 1;
+			}
+
+		}
+		return count;
+	}
+	
+	@Override
+	public String toString() {
+		return "ISBN: " + isbn + "\tTITLE: " + title;
+	}
+	
+	private static final long serialVersionUID = -5549374343698877820L;
 
 }
