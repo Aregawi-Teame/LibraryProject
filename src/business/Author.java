@@ -2,21 +2,16 @@ package business;
 
 import java.io.Serializable;
 
-public class Author extends Person implements Serializable {
-	private String shortBio;
-
-	public Author(String fName, String lName, String tel, Address addr, String shortBio) {
-		super(fName, lName, tel, addr);
-		this.shortBio = shortBio;
+final public class Author extends Person implements Serializable {
+	private String bio;
+	public String getBio() {
+		return bio;
+	}
+	
+	public Author(String f, String l, String t, Address a, String bio) {
+		super(f, l, t, a);
+		this.bio = bio;
 	}
 
-	public String getShortBio() {
-		return this.shortBio;
-	}
-
-	public void setShortBio(String shortBio) {
-		this.shortBio = shortBio;
-	}
-
-	private static final long serialVersionUID = 8843771335003531059L;
+	private static final long serialVersionUID = 7508481940058530471L;
 }

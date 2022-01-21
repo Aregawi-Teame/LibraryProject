@@ -2,28 +2,43 @@ package business;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LibraryMember extends Person implements Serializable {
+import dataaccess.DataAccess;
+import dataaccess.DataAccessFacade;
+
+final public class LibraryMember extends Person implements Serializable {
 	private String memberId;
-	private CheckoutRecord checkoutRecord;
-
-	public LibraryMember(String memberId, String fName, String lName, String tel, Address addr) {
-		super(fName, lName, tel, addr);
+	private List<CheckoutRecord> checkoutRecords = new ArrayList<>();
+	
+	public LibraryMember(String memberId, String fname, String lname, String tel,Address add) {
+		super(fname,lname, tel, add);
 		this.memberId = memberId;
-		this.checkoutRecord = new CheckoutRecord();
 	}
-
+	
+	
 	public String getMemberId() {
-		return this.memberId;
+		return memberId;
+	}
+	
+	
+	public void addToRecord(CheckoutRecord record) {
+		checkoutRecords.add(record);
+	}
+	
+	
+	public List<CheckoutRecord> getRecords() {
+		return checkoutRecords;
 	}
 
-	public void addCheckoutRecord(Book book, LocalDate checkoutDate, LocalDate dueDate) {
-		checkoutRecord.addCheckoutEntry(book, checkoutDate, dueDate);
+	
+	
+	@Override
+	public String toString() {
+		return "Member Info: " + "ID: " + memberId + ", name: " + getFirstName() + " " + getLastName() + 
+				", " + getTelephone() + " " + getAddress();
 	}
 
-	public CheckoutRecord getCheckoutRecord() {
-		return checkoutRecord;
-	}
-
-	private static final long serialVersionUID = -2726043648216509571L;
+	private static final long serialVersionUID = -2226197306790714013L;
 }

@@ -2,29 +2,30 @@ package business;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CheckoutRecord implements Serializable {
-	static List<CheckoutEntry> checkoutEntries = new ArrayList<>();
-	private Book book;
-	private LocalDate checkoutDate, dueDate;
+	private static final long serialVersionUID = 1L;
+	private CheckoutRecordEntry recordEntry;
 
-	public void addCheckoutEntry(Book book, LocalDate checkoutDate, LocalDate dueDate) {
-		this.book = book;
-		this.checkoutDate = checkoutDate;
-		this.dueDate = dueDate;
-		checkoutEntries.add(new CheckoutEntry(book, checkoutDate, dueDate));
-	}
-	
-	public List<CheckoutEntry> getCheckoutEntries() {
-		return CheckoutRecord.checkoutEntries;
+	public CheckoutRecord(CheckoutRecordEntry entry) {
+		this.recordEntry = entry;
 	}
 
-	@Override
-	public String toString() {
-		return "BOOK " + book.toString() + "\nCHECKOUT DATE: " + this.checkoutDate + "\tDUE DATE: " + this.dueDate;
+	public String[] getEntry() {
+		return new String[] { recordEntry.getBookName(), recordEntry.getISBN(), recordEntry.getCheckoutDate(),
+				recordEntry.getdueDate() };
 	}
 
-	private static final long serialVersionUID = -3329931204020182890L;
+	public String[] getCheckoutRecord(String memberID) {
+		return new String[] { recordEntry.getBookName(), recordEntry.getISBN(), recordEntry.getCopyNum(),
+				recordEntry.getdueDate(), memberID };
+	}
+
+	public String getBookISBN() {
+		return recordEntry.getISBN();
+	}
+
+	public LocalDate dueDate() {
+		return recordEntry.getDueDate();
+	}
 }

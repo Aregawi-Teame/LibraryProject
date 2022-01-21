@@ -2,51 +2,36 @@ package business;
 
 import java.io.Serializable;
 
-public class Address implements Serializable {
+/* Immutable */
+final public class Address implements Serializable {
+	
+	private static final long serialVersionUID = -891229800414574888L;
 	private String street;
 	private String city;
 	private String state;
 	private String zip;
-
-	public Address(String Street, String City, String State, String zip) {
-		this.street = Street;
-		this.city = City;
-		this.state = State;
-		this.zip = zip;
-
-	}
-
-	public String getStreet() {
-		return this.street;
-	}
-
-	public String getCity() {
-		return this.city;
-	}
-
-	public String getState() {
-		return this.state;
-	}
-
-	public String getZip() {
-		return this.zip;
-	}
-
-	public void setStreet(String Street) {
-		this.street = Street;
-	}
-
-	public void setCity(String city) {
+	public Address(String street, String city, String state, String zip) {
+		this.street = street;
 		this.city = city;
-	}
-
-	public void setState(String state) {
 		this.state = state;
-	}
-
-	public void setZip(String zip) {
 		this.zip = zip;
 	}
-
-	private static final long serialVersionUID = -4935233558647213035L;
+	
+	public String getStreet() {
+		return street;
+	}
+	public String getCity() {
+		return city;
+	}
+	public String getState() {
+		return state;
+	}
+	public String getZip() {
+		return zip;
+	}
+	@Override
+	public String toString() {
+		return "(" + street + ", " + city + ", " + zip + ")";
+		
+	}
 }

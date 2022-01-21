@@ -2,32 +2,57 @@ package business;
 
 import java.io.Serializable;
 
-public class BookCopy implements Serializable {
+/**
+ * Immutable class
+ */
+final public class BookCopy implements Serializable {
+	
+	private static final long serialVersionUID = -63976228084869815L;
 	private Book book;
 	private int copyNum;
 	private boolean isAvailable;
-
-	public BookCopy(Book book, int copyNum, boolean isAvailable) {
+	
+	BookCopy(Book book, int copyNum, boolean isAvailable) {
 		this.book = book;
 		this.copyNum = copyNum;
 		this.isAvailable = isAvailable;
 	}
-
-	public Book getBook() {
-		return this.book;
+	
+	BookCopy(Book book, int copyNum) {
+		this.book = book;
+		this.copyNum = copyNum;
+	}
+	
+	
+	public static BookCopy newBookCopy(Book book, int copyNum, boolean isAvailable) {
+		BookCopy copy = new BookCopy(book,copyNum,isAvailable);
+		
+		return copy;
+	}
+	
+	
+	public boolean isAvailable() {
+		return isAvailable;
 	}
 
 	public int getCopyNum() {
-		return this.copyNum;
+		return copyNum;
 	}
-
-	public boolean isAvailable() {
-		return this.isAvailable;
+	
+	public Book getBook() {
+		return book;
 	}
-
-	public void changeAvailaibility() {
+	
+	public void changeAvailability() {
 		isAvailable = !isAvailable;
 	}
-
-	private static final long serialVersionUID = -63741886311972126L;
+	
+	@Override
+	public boolean equals(Object ob) {
+		if(ob == null) return false;
+		if(!(ob instanceof BookCopy)) return false;
+		BookCopy copy = (BookCopy)ob;
+		return copy.book.getIsbn().equals(book.getIsbn()) && copy.copyNum == copyNum;
+	}
+	
 }
