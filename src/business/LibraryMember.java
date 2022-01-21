@@ -3,7 +3,6 @@ package business;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@SuppressWarnings("serial")
 public class LibraryMember extends Person implements Serializable {
 	private String memberId;
 	private CheckoutRecord checkoutRecord;
@@ -25,4 +24,6 @@ public class LibraryMember extends Person implements Serializable {
 	public CheckoutRecord getCheckoutRecord() {
 		return checkoutRecord;
 	}
+
+	private static final long serialVersionUID = -2726043648216509571L;
 }
