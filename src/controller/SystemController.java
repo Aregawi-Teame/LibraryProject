@@ -1,9 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import business.LoginException;
+import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 import dataaccess.User;
@@ -26,11 +28,18 @@ public class SystemController implements ISystemController {
 
 	@Override
 	public List<String> allMembersId() {
-		return null;
+		DataAccess da = new DataAccessFacade();
+		List<String> retval = new ArrayList<>();
+		retval.addAll(da.readMemberMap().keySet());
+		return retval;
 	}
 
 	@Override
 	public List<String> allBooksIsbn() {
-		return null;
+		DataAccess da = new DataAccessFacade();
+		List<String> retval = new ArrayList<>();
+		retval.addAll(da.readBooksMap().keySet());
+		return retval;
 	}
+
 }
